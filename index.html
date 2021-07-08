@@ -140,23 +140,23 @@
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="alert alert-dismissible fade show d-none my-alert " role="alert" style="background-color: #deebfa;">
-              <strong>Terima kasih! </strong>Pesan anda sudah terkirim.
+              <strong>Thanks! </strong>Your message has been sent successfully.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <form name="contact-form">
               <div class="mb-3">
-                <label for="name" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="name">
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" aria-describedby="email" name="email">
               </div>
               <div class="mb-3">
-                <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="3" name="message"></textarea>
               </div>
-              <button type="submit" class="btn btn-kirim btn-dark" style="background-color: #0e3563;">Kirim</button>
+              <button type="submit" class="btn btn-send btn-dark" style="background-color: #0e3563;">Send</button>
 
               <button class="btn btn-loading d-none btn-dark" type="button" disabled style="background-color: #0e3563;">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -180,7 +180,7 @@
     <script>
       const scriptURL = 'https://script.google.com/macros/s/AKfycbxQQ4psgr8CUaOcykazg1TH5NBI9e5-qdIaxhbnCu6_ezPSoAwcMow-68BYS19WDqiX5g/exec'
       const form = document.forms['contact-form'];
-      const btnKirim = document.querySelector('.btn-kirim');
+      const btnSend = document.querySelector('.btn-send');
       const btnLoading = document.querySelector('.btn-loading');
       const myAlert = document.querySelector('.my-alert');
 
@@ -190,12 +190,12 @@
         // ketika tombol submit diklik
         // tampilkan tombol loading, hilangkan tombol kirim
         btnLoading.classList.toggle('d-none');
-        btnKirim.classList.toggle('d-none');
+        btnSend.classList.toggle('d-none');
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
           .then(response => {
             // tampilkan tombol kirim, hilangkan tombol loading
             btnLoading.classList.toggle('d-none');
-            btnKirim.classList.toggle('d-none');
+            btnSend.classList.toggle('d-none');
             // tampilkan alert
             myAlert.classList.toggle('d-none');
             // reset formnya
